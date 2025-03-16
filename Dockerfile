@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM nginx:1.25-alpine
+FROM nginx:alpine
 RUN apk update && apk upgrade
 COPY --from=build /app/dist /usr/share/nginx/html
 # Add nginx configuration if needed
