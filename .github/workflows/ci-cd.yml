@@ -120,6 +120,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           load: true
+
+      - name: Check for Updates
+        run: docker run --rm ghcr.io/${{ github.actor }}/${{ github.repository }}:latest apk update && apk upgrade --available --no-cache
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
